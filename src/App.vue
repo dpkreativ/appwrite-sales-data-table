@@ -145,6 +145,18 @@ export default {
   },
 
   methods: {
+    authorize() {
+      let init = api.getAccount();
+      init.then(
+        (res) => {
+          console.log(res);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    },
+
     initialize() {
       this.sales = [
         {
