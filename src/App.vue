@@ -178,6 +178,15 @@ export default {
     },
 
     deleteItemConfirm() {
+      try {
+        api.deleteDocument(
+          Server.collectionId,
+          this.sales[this.editedIndex].$id
+        );
+      } catch (error) {
+        console.log(error);
+      }
+
       this.sales.splice(this.editedIndex, 1);
       this.closeDelete();
     },
