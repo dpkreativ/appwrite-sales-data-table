@@ -101,6 +101,9 @@
 </template>
 
 <script>
+import api from './api';
+import { Server } from './utils/config';
+
 export default {
   data: () => ({
     dialog: false,
