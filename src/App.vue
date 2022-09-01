@@ -208,11 +208,15 @@ export default {
     },
 
     save() {
-      if (this.editedIndex > -1) {
-        Object.assign(this.sales[this.editedIndex], this.editedItem);
-      } else {
-        this.sales.push(this.editedItem);
-      }
+      let newItem = api.createDocument(Server.collectionId, this.editedItem);
+      newItem.then(
+        (res) => {
+          this.sales.push(res);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
       this.close();
     },
   },
