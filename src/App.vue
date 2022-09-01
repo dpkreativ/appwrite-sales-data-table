@@ -158,29 +158,17 @@ export default {
     },
 
     initialize() {
-      this.sales = [
-        {
-          date: '8/31/2022',
-          rep: 'Frankie Ystein',
-          item: 'Frozen Yoghurt',
-          quantity: 2,
-          price: 40.79,
+      this.authorize();
+
+      let getItems = api.listDocuments(Server.collectionId);
+      getItems.then(
+        (res) => {
+          this.sales = res.documents;
         },
-        {
-          date: '8/31/2022',
-          rep: 'Divine Orji',
-          item: 'Ice Cream Sandwich',
-          quantity: 1,
-          price: 0.84,
-        },
-        {
-          date: '8/31/2022',
-          rep: 'Olawale Olakunle',
-          item: 'Eclair',
-          quantity: 7,
-          price: 20.99,
-        },
-      ];
+        (err) => {
+          console.log(err);
+        }
+      );
     },
 
     deleteItem(item) {
